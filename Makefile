@@ -4,7 +4,7 @@ REPONAME     := nginx-forward-proxy
 SEMVER_REGEX ?= ^([0-9]+\.[0-9]+\.[0-9]+)-?([0-9A-Za-z-]+[\.[0-9A-Za-z-]+]*)?\+?([0-9A-Za-z-]+)?
 VERSION_CORE ?= $(shell git describe --tags --abbrev=0 2>/dev/null | sed -E -e 's/^v//' -e 's/$(SEMVER_REGEX)/\1/')
 PRE_RELEASE  ?= $(shell git describe --tags --abbrev=0 2>/dev/null | sed -E -e 's/^v//' -e 's/$(SEMVER_REGEX)/\2/')
-BUILD        ?= $(if $(subst $(shell git describe --tags --abbrev=0 2>/dev/null)-,,$(shell git describe --tags --dirty 2>/dev/null)),dev.$(subst $(shell git describe --tags --abbrev=0 2>/dev/null)-,,$(shell git describe --tags --dirty 2>/dev/null)),)
+BUILD        ?=
 VERSION      ?= $(if $(VERSION_CORE),$(VERSION_CORE),0.0.0)$(if $(PRE_RELEASE),-$(PRE_RELEASE),)$(if $(BUILD),+$(BUILD),)
 IMAGETAG     := $(USERNAME)/$(REPONAME):$(VERSION)
 
