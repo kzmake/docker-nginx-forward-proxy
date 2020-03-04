@@ -1,7 +1,7 @@
 FROM alpine:3.11 AS build-nginx
 LABEL maintainer="kzmake <kzmake.i3a@gmail.com>"
 
-ENV NGINX_VERSION 1.17.8
+ENV NGINX_VERSION 1.17.9
 ARG CONFIG=" \
     --prefix=/etc/nginx \
     --sbin-path=/usr/sbin/nginx \
